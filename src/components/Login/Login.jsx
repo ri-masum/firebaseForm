@@ -1,8 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useContext } from "react";
 
 const Login = () => {
-  const handleForm = () => {
-    console.log("clicked");
+
+    const {login}=useContext(AuthContext)
+    const navigate=useNavigate()
+
+  const handleForm = (e) => {
+    e.preventDefault();
+
+    const email=e.target.email.value;
+    const pass=e.target.password.value;
+    console.log(email,pass);
+
+
+    login(email,pass)
+    .then(result=>{
+        console.log(result.user);
+        e.target.reset();
+        navigate('/')
+    })
+    .catch(err=>{
+        console.error(err);
+    })
   };
 
   return (

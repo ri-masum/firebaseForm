@@ -1,9 +1,20 @@
+import { useContext } from "react";
+import  { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Home = () => {
+    const authUse=useContext(AuthContext);
+
+    console.log(authUse);
     return (
         <div>
-            this is home
+            <ul>
+                <li>items</li><br />
+                <li>items</li><br />
+                <li>items</li><br />
+                <li>items</li><br />
+                <li>items</li><br />
+            </ul>
         </div>
     );
 };
